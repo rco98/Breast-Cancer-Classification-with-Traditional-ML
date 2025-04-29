@@ -1,7 +1,7 @@
 # Breast-Cancer-Classification-with-Traditional-ML
 Full traditional machine learning pipeline for a breast cancer classification task.
 ## Dataset
-You can found all the images and the relative segmentations at this link:
+You can found all the images and the relative segmentations and various clinical informations at this link:
 <pre lang="markdown"> 
 https://drive.google.com/drive/folders/1T15ylY6xUQI6TuKlZfN_uV5z6b67eyH-?usp=sharing 
     </pre>
