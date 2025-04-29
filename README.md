@@ -3,7 +3,7 @@ Full traditional machine learning pipeline for a breast cancer classification ta
 
 
 <pre lang="markdown"> 
-  ```bash # Create anda activate conda environment
+  # Create anda activate conda environment
   conda create -n breast-cancer-ml python=3.10
   conda activate breast-cancer-ml 
-  ``` </pre>
+  </pre>
