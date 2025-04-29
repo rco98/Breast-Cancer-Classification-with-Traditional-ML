@@ -3,11 +3,12 @@
 Full traditional machine learning pipeline for a breast cancer classification task.
 
 This project requires that [Anaconda](https://www.anaconda.com/) is installed on your (Windows) system.  
-It is recommended to work within a dedicated folder where all project files will be organized.  
-Let's assume the working directory is named **`BR-Classification`**.
+
+
 
 ### 📁 Project Directory Structure
-
+It is recommended to work within a dedicated folder where all project files will be organized. 
+Let's assume the working directory is named **`BR-Classification`**.
 After completing the setup, your project directory should look like this:
 
 <pre lang="markdown">
