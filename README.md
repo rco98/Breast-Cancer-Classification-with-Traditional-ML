@@ -14,9 +14,8 @@ You can set up the project environment using Conda:
   </pre>
 Alternatively, to create a local Conda environment in a specific folder, use:
 <pre lang="markdown"> 
-    conda create -p ./env python=3.10
-    conda activate ./env
-    pip install -r requirements.txt
-    </pre>
-
+  conda create -p ./breast-cancer-ml python=3.10
+  conda activate ./breast-cancer-ml 
+  pip install -r requirements.txt
+  </pre>
 
