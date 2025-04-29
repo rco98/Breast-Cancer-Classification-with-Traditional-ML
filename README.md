@@ -6,6 +6,22 @@ This project requires that [Anaconda](https://www.anaconda.com/) is installed on
 It is recommended to work within a dedicated folder where all project files will be organized.  
 Let's assume the working directory is named **`BR-Classification`**.
 
+### 📁 Project Directory Structure
+
+After completing the setup, your project directory should look like this:
+
+<pre lang="markdown">
+BR-Classification/
+├── images/
+├── segmentations/
+└── utilities/
+    ├── requirements.txt
+    ├── input_pyradiomics.csv
+    ├── pyradiomics_features.csv
+    └── data_info.ipynb
+</pre>
+
+
 ---
 
 ## Create and activate conda environment
