@@ -8,6 +8,7 @@ This project requires that [Anaconda](https://www.anaconda.com/) is installed on
 
 ### 📁 Project Directory Structure
 It is recommended to work within a dedicated folder where all project files will be organized. 
+
 Let's assume the working directory is named **`BR-Classification`**.
 After completing the setup, your project directory should look like this:
 
