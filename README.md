@@ -9,7 +9,9 @@ This project implements a complete traditional machine learning pipeline to clas
 - [2. Installation and Setup](#2-installation-and-setup)
 - [3. Dataset](#3-dataset)
 - [4. Feature Extraction with Pyradiomics](#4-feature-extraction-with-pyradiomics)
-- [5. ]
+- [5. Preparation of the Classification Feature](#5-preparation-of-the-classification-feature)
+- [6. Preparation of the Classification Label](#6-preparation-of-the-classification-label)
+- [7. Training and Validation of the Classification Model](#7-training-and-validation-of-the-classification-model)
 
 
 ## 1. **Project Structure**
@@ -120,10 +122,13 @@ or via pip:
   </pre>
 
 ### 4.2 Prepare the CSV File
-Use the `data_info.ipynb` notebook to generate the file `input_pyradiomics.csv`.
 
-**`Note:`** 
-- `data_info.ipynb` notebook includes a cell located in the paragraph **"Pyradiomics Input File"** that generates it. Once this cell is executed, it will create the file `input_pyradiomics.csv`, which will be saved in the **`utilities`** folder. It is recommended to use `input_pyradiomics.csv` from the same folder where it was saved.
+Use the `data_info.ipynb` notebook to generate the `input_pyradiomics.csv` file required by PyRadiomics.
+
+> **Note:**  
+> Inside the notebook, locate the section titled **"Pyradiomics Input File"**.  
+> It includes a code cell that creates the `input_pyradiomics.csv`, which will be automatically saved in the `utilities` folder.  
+> Make sure to run PyRadiomics using the CSV file directly from this location to avoid any path-related issues.
 
 ### 4.3 Run Pyradiomics
 Open the Anaconda Prompt and navigate to the main project folder (**`BR-Classification`**). 
@@ -141,4 +146,24 @@ Open the Anaconda Prompt and navigate to the main project folder (**`BR-Classifi
 
 If successful, the extracted features will be saved in `pyradiomics_features.csv` in the **`utilities`** folder. This file will contain one row per patient and one column for each extracted feature.
 
+## 5. **Preparation of the Classification Feature**
 
+Use the `data_info.ipynb` notebook to generate the feature CSV file for classification.
+
+> **Note:**  
+> In the notebook, look for the section titled **"Preparation of the Classification Dataset"**.  
+> This section includes a code cell that processes `pyradiomics_features.csv` and generates a new file named `features.csv`.
+
+Once executed, the resulting `features.csv` will be saved inside the `utilities` folder and will be ready for use in training machine learning models.
+
+## 6. **Preparation of the Classification Label**
+
+To perform classification, you first need to define your specific clinical task (e.g., distinguishing between invasive and in situ tumors).
+
+Create a `pandas` DataFrame with two columns:
+- **Column 1**: `PatientID` – the unique identifier of each patient (must match the IDs used in the features file)
+- **Column 2**: `Label` – the target classification label for each patient (e.g., 0 = invasive, 1 = in situ)
+
+Once prepared, this DataFrame can be saved as a CSV file (e.g., `labels.csv`) and used during model training and evaluation.
+
+## 7. **Training and Validation of the Classification Model**
