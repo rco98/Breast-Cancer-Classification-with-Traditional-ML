@@ -6,7 +6,7 @@ This project requires that [Anaconda](https://www.anaconda.com/) is installed on
 
 
 
-### 📁 Project Directory Structure
+### Project Directory Structure
 It is recommended to work within a dedicated folder where all project files will be organized. 
 
 Let's assume the working directory is named **`BR-Classification`**.
@@ -27,7 +27,7 @@ BR-Classification/
 
 ---
 
-## Create and activate conda environment
+## Create and Activate Conda Environment
 Once Anaconda is installed and properly configured, create a new environment that includes all the required Python packages.
 
 Open the Anaconda Prompt, navigate to your BR-Classification folder, and run the following commands:
@@ -59,6 +59,30 @@ SCEGLIERE SE INSTALLARE PYRADIOMICS COSì O SE INSERIRE L'INSTALLAZIONE NEL PARA
 
 First, download the breast MRI images and the corresponding segmentation masks in NIfTI format.  
 Place them inside the main folder **`BR-Classification`**, in two subfolders named **`images`** and **`segmentation`**.
+
+### Images Directory Structure
+
+Your `images` directory should look like this:
+
+<pre lang="markdown">
+images/
+└── Patient_ID/
+    └── Patient_ID_000X.nii.gz
+</pre>
+
+Where `000X` identifies the acquisition time point of the DCE-MRI sequence.
+
+### Segmentations Directory Structure
+
+Your `images` directory should look like this:
+
+<pre lang="markdown">
+segmentations/
+├── expert/
+    └── Patient_ID.nii.gz/
+└── automatic/
+    └── Patient_ID.nii.gz/
+</pre>
 
 You can access and download the data from the following link:
 
@@ -117,7 +141,6 @@ Then, perform the actual feature extraction:
   pyradiomics .\utilities\input_pyradiomics.csv -o .\utilities\pyradiomics_features.csv -f csv --setting "resampledPixelSpacing: 1,1,1" --jobs 4
 </pre>
 
-If the process completes successfully, you will find the file `pyradiomics_features.csv` in the **`utilities`** folder.  
-This file will contain one row per patient and one column for each extracted feature.
+If the process completes successfully, you will find the file `pyradiomics_features.csv` in the **`utilities`** folder. This file will contain one row per patient and one column for each extracted feature.
 
 
