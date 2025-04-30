@@ -12,7 +12,7 @@ It is recommended to work within a dedicated folder where all project files will
 Let's assume the working directory is named **`BR-Classification`**.
 After completing the setup, your project directory should look like this:
 
-<pre lang="markdown">
+<pre>
 BR-Classification/
 ├── images/
 ├── segmentations/
@@ -50,21 +50,25 @@ To install the packages, run:
   pip install -r ./utilities/requirements.txt
   </pre>
 
-**Nota** 
-SCEGLIERE SE INSTALLARE PYRADIOMICS COSì O SE INSERIRE L'INSTALLAZIONE NEL PARAGRAFO DEDICATO
-
 ---
 
 ## Dataset
 
-First, download the breast MRI images and the corresponding segmentation masks in NIfTI format.  
+First, download the breast MRI images and the corresponding segmentation masks in NIfTI format.
+
+You can access and download the data from the following link:
+
+<pre lang="markdown"> 
+https://drive.google.com/drive/folders/1T15ylY6xUQI6TuKlZfN_uV5z6b67eyH-?usp=sharing
+  </pre>
+
 Place them inside the main folder **`BR-Classification`**, in two subfolders named **`images`** and **`segmentation`**.
 
 ### Images Directory Structure
 
 Your `images` directory should look like this:
 
-<pre lang="markdown">
+<pre>
 images/
 └── Patient_ID/
     └── Patient_ID_000X.nii.gz
@@ -74,19 +78,16 @@ Where `000X` identifies the acquisition time point of the DCE-MRI sequence.
 
 ### Segmentations Directory Structure
 
-Your `images` directory should look like this:
+Your `segmentations` directory should look like this:
 
-<pre lang="markdown">
+<pre>
 segmentations/
-├── expert/
+└── expert/
     └── Patient_ID.nii.gz/
 └── automatic/
     └── Patient_ID.nii.gz/
 </pre>
 
-You can access and download the data from the following link:
-
-https://drive.google.com/drive/folders/1T15ylY6xUQI6TuKlZfN_uV5z6b67eyH-?usp=sharing
 
 ### Information about the dataset
 
@@ -122,14 +123,16 @@ or via pip:
 ### Use pyradiomics on our dataset
 
 To use Pyradiomics, it is necessary to prepare a **CSV** file that describes our dataset.  
-For this purpose, the `data_info.ipynb` notebook includes a cell located in the paragraph **"Pyradiomics input file"** that generates it.
 
+For this purpose, the `data_info.ipynb` notebook includes a cell located in the paragraph **"Pyradiomics Input File"** that generates it. 
 Once this cell is executed, it will create the file `input_pyradiomics.csv`, which will be saved in the **`utilities`** folder.  
-**Note:** It is recommended to use `input_pyradiomics.csv` from the same folder where it was saved.
+**`Note:`** It is recommended to use `input_pyradiomics.csv` from the same folder where it was saved.
 
 After completing this step, we can proceed to compute the features using Pyradiomics. 
 
-Open the Anaconda Prompt. Navigate to the main project folder (**`BR-Classification`**) and first verify the integrity of the dataset by running:
+Open the Anaconda Prompt and navigate to the main project folder (**`BR-Classification`**). 
+
+First, verify the integrity of the dataset by running:
 
 <pre lang="markdown"> 
   pyradiomics .\utilities\input_pyradiomics.csv -o .\utilities\pyradiomics_features.csv -f csv --setting "resampledPixelSpacing: 1,1,1" --jobs 4 --validate
