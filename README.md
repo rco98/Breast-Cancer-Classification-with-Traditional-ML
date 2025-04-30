@@ -1,72 +1,76 @@
-# Breast-Cancer-Classification-with-Traditional-ML
+# Breast Cancer Classification with Traditional ML
+A complete machine learning pipeline for breast cancer classification.
 
-Full traditional machine learning pipeline for a breast cancer classification task.
+## Description
+This project implements a complete traditional machine learning pipeline to classify MRI images of patients with breast cancer. It focuses on feature extraction using Pyradiomics and image segmentation.
 
-This project requires that [Anaconda](https://www.anaconda.com/) is installed on your (Windows) system.  
+## Table of Contents
+- [1. Project Structure](#1-project-structure)
+- [2. Installation and Setup](#2-installation-and-setup)
+- [3. Dataset](#3-dataset)
+- [4. Feature Extraction with Pyradiomics](#4-feature-extraction-with-pyradiomics)
+- [5. ]
 
 
+## 1. **Project Structure**
 
-### Project Directory Structure
-It is recommended to work within a dedicated folder where all project files will be organized. 
-
-Let's assume the working directory is named **`BR-Classification`**.
-After completing the setup, your project directory should look like this:
-
+The recommended directory structure is as follows:
 <pre>
-BR-Classification/
-├── images/
-├── segmentations/
-└── utilities/
-    ├── requirements.txt
-    ├── input_pyradiomics.csv
-    ├── pyradiomics_features.csv
-    ├── input_pyradiomics.csv
-    └── data_info.ipynb
+    BR-Classification/
+    ├── images/              # Contains MRI images of patients
+    ├── segmentations/       # Contains segmentation masks
+    └── utilities/           # Contains scripts and auxiliary files
+        ├── requirements.txt # Python dependencies
+        ├── input_pyradiomics.csv  # CSV file for Pyradiomics
+        └── data_info.ipynb  # Notebook for dataset exploration
 </pre>
 
-
 ---
+## 2. **Installation and Setup**
 
-## Create and Activate Conda Environment
-Once Anaconda is installed and properly configured, create a new environment that includes all the required Python packages.
+### 2.1 Prerequisites
+Ensure that [Anaconda](https://www.anaconda.com/) is installed on your system.
 
-Open the Anaconda Prompt, navigate to your BR-Classification folder, and run the following commands:
+### 2.2 Create and Activate the Conda Environment
+
+Open the Anaconda Prompt, navigate to your **`BR-Classification`** folder, and run the following commands:
 <pre lang="markdown"> 
   conda create -n breast-cancer-ml-env python=3.10
   conda activate breast-cancer-ml-env 
   </pre>
-Alternatively, to create a local Conda environment in this folder, use:
+Alternatively, to create a local Conda Environment in the main folder, use:
 <pre lang="markdown"> 
   conda create -p ./breast-cancer-ml-env python=3.10
   conda activate ./breast-cancer-ml-env 
   </pre>
 
-All necessary Python packages are listed in the requirements.txt file, which can be found in this repository.
+### 2.3 Install Dependencies
 
-We recommend placing it inside a subfolder named **`utilities`** within the main project folder.
+Install the required Python packages listed in `requirements.txt` (we recommend placing it inside a subfolder named **`utilities`** within the main project folder):
 
-To install the packages, run:
 <pre lang="markdown"> 
   pip install -r ./utilities/requirements.txt
   </pre>
 
 ---
 
-## Dataset
+## 3. **Dataset**
 
-First, download the breast MRI images and the corresponding segmentation masks in NIfTI format.
+Explain how to download and organize the dataset.
 
-You can access and download the data from the following link:
-
+### 3.1 Download the data 
+Download the breast MRI images and the corresponding segmentation masks (NIfTI format) from the link below:  
 <pre lang="markdown"> 
 https://drive.google.com/drive/folders/1T15ylY6xUQI6TuKlZfN_uV5z6b67eyH-?usp=sharing
   </pre>
 
-Place them inside the main folder **`BR-Classification`**, in two subfolders named **`images`** and **`segmentation`**.
+### 3.1 Organize the Data
+Place the downloaded files inside your main project folder `BR-Classification` in two subfolders:
+- `images/`  
+- `segmentations/`  
+#### 3.1.1 Images Directory Structure
 
-### Images Directory Structure
-
-Your `images` directory should look like this:
+Your `images/` folder should follow this layout:
 
 <pre>
 images/
@@ -74,10 +78,9 @@ images/
     └── Patient_ID_000X.nii.gz
 </pre>
 
-Where `000X` identifies the acquisition time point of the DCE-MRI sequence.
-
-### Segmentations Directory Structure
-
+- `Patient_ID/`: unique identifier for each patient
+- `000X`: acquisition time point of the DCE-MRI sequence
+#### 3.1.1 Segmentations Directory Structure
 Your `segmentations` directory should look like this:
 
 <pre>
@@ -89,28 +92,24 @@ segmentations/
 </pre>
 
 
-### Information about the dataset
+### 3.2 Information about the Dataset
+To inspect dataset metadata, use the `data_info.ipynb`:
 
-To explore the structure and metadata of the dataset, make sure to download the `data_info.ipynb` notebook and place it inside the **`utilities`** folder.
+- Download `data_info.ipynb` and place it in the **`utilities`** folder.
 
-This notebook was created using [Jupyter](https://jupyter.org/), which is already included in the `breast-cancer-ml-env` environment.
-
-To launch the notebook, activate the environment and run:
+- Launch Jupyter Lab (ensure your breast-cancer-ml-env is activated):
 <pre lang="markdown"> 
   jupyter lab
   </pre>
-This will open a new browser tab where you can navigate to and run `data_info.ipynb`.
-
-The notebook can be modified freely according to your needs.
-For now, it provides essential information about the images and masks, such as: Shape, Data type, Pixel spacing and Slice thickness.
+- Run the notebook to explore image/mask properties such as: Shape, Data type, Pixel spacing and Slice thickness.
 
 ---
 
-## Feature extraction with pyradiomics
-
+## 4. **Feature Extraction with Pyradiomics**
 Pyradiomics is an open-source python package for the extraction of Radiomics features from medical imaging. For more information you can go on the official site [pyradiomics](https://pyradiomics.readthedocs.io/en/latest/).
 
-First, we need to install the package on our environment using on Anaconda Prompt. 
+### 4.1 Pyradomics Package Installation
+Install the package on the environment using on Anaconda Prompt. 
 As reported on the site, we can install it via conda:
 <pre lang="markdown"> 
   conda install -c radiomics pyradiomics
@@ -120,30 +119,26 @@ or via pip:
   python -m pip install pyradiomics
   </pre>
 
-### Use pyradiomics on our dataset
+### 4.2 Prepare the CSV File
+Use the `data_info.ipynb` notebook to generate the file `input_pyradiomics.csv`.
 
-To use Pyradiomics, it is necessary to prepare a **CSV** file that describes our dataset.  
+**`Note:`** 
+- `data_info.ipynb` notebook includes a cell located in the paragraph **"Pyradiomics Input File"** that generates it. Once this cell is executed, it will create the file `input_pyradiomics.csv`, which will be saved in the **`utilities`** folder. It is recommended to use `input_pyradiomics.csv` from the same folder where it was saved.
 
-For this purpose, the `data_info.ipynb` notebook includes a cell located in the paragraph **"Pyradiomics Input File"** that generates it. 
-Once this cell is executed, it will create the file `input_pyradiomics.csv`, which will be saved in the **`utilities`** folder.  
-**`Note:`** It is recommended to use `input_pyradiomics.csv` from the same folder where it was saved.
-
-After completing this step, we can proceed to compute the features using Pyradiomics. 
-
+### 4.3 Run Pyradiomics
 Open the Anaconda Prompt and navigate to the main project folder (**`BR-Classification`**). 
-
-First, verify the integrity of the dataset by running:
+- Validate the dataset: 
 
 <pre lang="markdown"> 
   pyradiomics .\utilities\input_pyradiomics.csv -o .\utilities\pyradiomics_features.csv -f csv --setting "resampledPixelSpacing: 1,1,1" --jobs 4 --validate
 </pre>
 
-Then, perform the actual feature extraction:
+- Perform the feature extraction:
 
 <pre lang="markdown"> 
   pyradiomics .\utilities\input_pyradiomics.csv -o .\utilities\pyradiomics_features.csv -f csv --setting "resampledPixelSpacing: 1,1,1" --jobs 4
 </pre>
 
-If the process completes successfully, you will find the file `pyradiomics_features.csv` in the **`utilities`** folder. This file will contain one row per patient and one column for each extracted feature.
+If successful, the extracted features will be saved in `pyradiomics_features.csv` in the **`utilities`** folder. This file will contain one row per patient and one column for each extracted feature.
 
 
