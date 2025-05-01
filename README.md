@@ -66,7 +66,7 @@ Explain how to download and organize the dataset.
 ### 3.1 Download the data 
 Download the breast MRI images and the corresponding segmentation masks (NIfTI format) from the link below:  
 <pre lang="markdown"> 
-https://drive.google.com/drive/folders/1T15ylY6xUQI6TuKlZfN_uV5z6b67eyH-?usp=sharing
+google_drive_link
   </pre>
 
 ### 3.1 Organize the Data
