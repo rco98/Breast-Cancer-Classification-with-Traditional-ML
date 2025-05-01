@@ -9,9 +9,7 @@ This project implements a complete traditional machine learning pipeline to clas
 - [2. Installation and Setup](#2-installation-and-setup)
 - [3. Dataset](#3-dataset)
 - [4. Feature Extraction with Pyradiomics](#4-feature-extraction-with-pyradiomics)
-- [5. Preparation of the Classification Feature](#5-preparation-of-the-classification-feature)
-- [6. Preparation of the Classification Label](#6-preparation-of-the-classification-label)
-- [7. Training and Validation of the Classification Model](#7-training-and-validation-of-the-classification-model)
+- [5. Preparation of the Classification Dataset and Model Training](#5-preparation-of-the-classification-dataset-and-model-training)
 
 
 ## 1. **Project Structure**
@@ -146,24 +144,58 @@ Open the Anaconda Prompt and navigate to the main project folder (**`BR-Classifi
 
 If successful, the extracted features will be saved in `pyradiomics_features.csv` in the **`utilities`** folder. This file will contain one row per patient and one column for each extracted feature.
 
-## 5. **Preparation of the Classification Feature**
+## 5. **Preparation of the Classification Dataset and Model Training**
 
-Use the `data_info.ipynb` notebook to generate the feature CSV file for classification.
+In this section, we will prepare the classification dataset, generate the required CSV files, and then train and validate classification models using the `classification.ipynb` notebook located in the **`.\BR-Classification\classification`** folder.
+
+### 5.1 Prepare the Classification Features
+To generate the feature CSV file for classification, use the `classification.ipynb` notebook.
 
 > **Note:**  
-> In the notebook, look for the section titled **"Preparation of the Classification Dataset"**.  
-> This section includes a code cell that processes `pyradiomics_features.csv` and generates a new file named `features.csv`.
+> In the notebook, locate the section titled **"Preparation of the Classification Dataset"**. This section processes the `pyradiomics_features.csv` file and generates a new file named `feature.csv`.
 
-Once executed, the resulting `features.csv` will be saved inside the `utilities` folder and will be ready for use in training machine learning models.
+Once executed, the resulting `feature.csv` will be saved in the `classification` folder and will be ready for use in training machine learning models.
 
-## 6. **Preparation of the Classification Label**
+> **Note:**  
+> This file can be enriched with additional clinical information about the patients, such as:
+> - Age
+> - Breast cancer laterality
+> - Other relevant clinical data
 
-To perform classification, you first need to define your specific clinical task (e.g., distinguishing between invasive and in situ tumors).
+### 5.2 Prepare the Classification Labels
+To perform classification, you need to define your clinical task (e.g., distinguishing between invasive and in situ tumors).
 
-Create a `pandas` DataFrame with two columns:
-- **Column 1**: `PatientID` – the unique identifier of each patient (must match the IDs used in the features file)
-- **Column 2**: `Label` – the target classification label for each patient (e.g., 0 = invasive, 1 = in situ)
+1. Create a `pandas` DataFrame with two columns:
+   - **`PatientID`**: The unique identifier of each patient (ensure this matches the IDs used in the features file).
+   - **`Label`**: The target classification label for each patient (e.g., 0 = invasive, 1 = in situ).
 
-Once prepared, this DataFrame can be saved as a CSV file (e.g., `labels.csv`) and used during model training and evaluation.
+2. Save the DataFrame as a CSV file (e.g., `label.csv`).
 
-## 7. **Training and Validation of the Classification Model**
+This labels file will be used during model training and evaluation.
+
+### 5.3 Train and Validate the Classification Model
+Once the `feature.csv` and `label.csv` files are ready, use the same `classification.ipynb` notebook to proceed with model training and validation.
+
+#### Available Models
+The following machine learning models are available for training:
+- **XGBoost**
+- **K-Nearest Neighbors (KNN)**
+- **Support Vector Machine (SVM)**
+- **Random Forest**
+- **Naive Bayes**
+- **Decision Tree**
+- **Logistic Regression**
+- **Multilayer Perceptron (MLP)**
+
+#### Validation Schemes
+The notebook supports the following validation schemes:
+- **Hold-out** (work in progress)
+- **K-fold Cross-Validation** (work in progress)
+- **Leave-One-Out Cross-Validation (LOOCV)**
+
+The notebook allows you to:
+1. Load the `feature.csv` file with the extracted features.
+2. Load the `label.csv` file with the target labels.
+3. Train and validate models with the selected validation scheme.
+
+By running the notebook, you can explore and compare different models and validation techniques with your dataset, starting the process of model training and evaluation.
