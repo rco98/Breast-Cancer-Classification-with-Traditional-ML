@@ -19,10 +19,15 @@ The recommended directory structure is as follows:
     BR-Classification/
     ├── images/              # Contains MRI images of patients
     ├── segmentations/       # Contains segmentation masks
-    └── utilities/           # Contains scripts and auxiliary files
+    ├── utilities/           # Contains scripts and auxiliary files
         ├── requirements.txt # Python dependencies
-        ├── input_pyradiomics.csv  # CSV file for Pyradiomics
+        ├── input_pyradiomics.csv  # CSV input file for Pyradiomics
+        ├── pyradiomics_features.csv  # CSV output file of Pyradiomics
         └── data_info.ipynb  # Notebook for dataset exploration
+    └── classification
+        ├── classification.ipynb  # Python dependencies
+        ├── feature.csv  # CSV of features for classification model
+        └── label.csv  # CSV of labels for classification model
 </pre>
 
 ---
@@ -174,7 +179,7 @@ To perform classification, you need to define your clinical task (e.g., distingu
 This labels file will be used during model training and evaluation.
 
 ### 5.3 Train and Validate the Classification Model
-Once the `feature.csv` and `label.csv` files are ready, use the same `classification.ipynb` notebook to proceed with model training and validation.
+Once the `feature.csv` and `label.csv` files are ready, use the same `classification.ipynb` notebook, from the paragraph "**Preparing the Feature Dataframe and Labels Array**", to proceed with model training and validation.
 
 #### Available Models
 The following machine learning models are available for training:
