@@ -194,8 +194,8 @@ The following machine learning models are available for training:
 
 #### Validation Schemes
 The notebook supports the following validation schemes:
-- **Hold-out** (work in progress)
-- **K-fold Cross-Validation** (work in progress)
+- **Hold-out** (WORK IN PROGRESS...!!!)
+- **K-fold Cross-Validation** (WORK IN PROGRESS...!!!)
 - **Leave-One-Out Cross-Validation (LOOCV)**
 
 The notebook allows you to:
