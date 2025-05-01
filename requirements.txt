@@ -7,3 +7,6 @@ xgboost
 pyradiomics
 shap
 jupyter
+tqdm
+scikit-plot
+mrmr-selection
