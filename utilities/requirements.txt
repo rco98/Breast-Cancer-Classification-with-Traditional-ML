@@ -1,0 +1,11 @@
+numpy
+pandas
+scikit-learn
+matplotlib
+seaborn
+xgboost
+shap
+jupyter
+tqdm
+scikit-plot
+mrmr-selection
