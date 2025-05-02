@@ -40,12 +40,12 @@ Ensure that [Anaconda](https://www.anaconda.com/) is installed on your system.
 
 Open the Anaconda Prompt, navigate to your **`BR-Classification`** folder, and run the following commands:
 <pre lang="markdown"> 
-  conda create -n breast-cancer-ml-env python=3.10
+  conda create -n breast-cancer-ml-env python=3.7
   conda activate breast-cancer-ml-env 
   </pre>
 Alternatively, to create a local Conda Environment in the main folder, use:
 <pre lang="markdown"> 
-  conda create -p ./breast-cancer-ml-env python=3.10
+  conda create -p ./breast-cancer-ml-env python=3.7
   conda activate ./breast-cancer-ml-env 
   </pre>
 
