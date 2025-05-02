@@ -85,7 +85,7 @@ images/
 
 - `Patient_ID/`: unique identifier for each patient
 - `000X`: acquisition time point of the DCE-MRI sequence
-#### 3.1.1 Segmentations Directory Structure
+#### 3.2.2 Segmentations Directory Structure
 Your `segmentations` directory should look like this:
 
 <pre>
