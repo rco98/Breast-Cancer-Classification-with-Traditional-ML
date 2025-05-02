@@ -69,11 +69,11 @@ Download the breast MRI images and the corresponding segmentation masks (NIfTI f
 google_drive_link
   </pre>
 
-### 3.1 Organize the Data
+### 3.2 Organize the Data
 Place the downloaded files inside your main project folder `BR-Classification` in two subfolders:
 - `images/`  
 - `segmentations/`  
-#### 3.1.1 Images Directory Structure
+#### 3.2.1 Images Directory Structure
 
 Your `images/` folder should follow this layout:
 
@@ -97,7 +97,7 @@ segmentations/
 </pre>
 
 
-### 3.2 Information about the Dataset
+### 3.3 Information about the Dataset
 To inspect dataset metadata, use the `data_info.ipynb`:
 
 - Download `data_info.ipynb` and place it in the **`utilities`** folder.
